@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {ambilData} from "../action/index"
+import { ambilData, pilihProduct } from "../action/index"
 
 export class ListProduct extends Component {
 
@@ -12,7 +12,7 @@ export class ListProduct extends Component {
         return this.props.listProduct.map(product => {
             return (
                 <div key={product.id}>
-                    <h2>{product.namaproduct}</h2>
+                    <h2 onClick={() => this.props.pilihProduct(product)}>{product.namaproduct}</h2>
                 </div>
             )
         })
@@ -32,4 +32,4 @@ const stateToProps = (state) => {
     }
 }
 
-export default connect(stateToProps, {ambilData})(ListProduct)
+export default connect(stateToProps, {ambilData, pilihProduct})(ListProduct)
